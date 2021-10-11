@@ -1,0 +1,448 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+ 
+
+# Make data base, printed on Mon Oct 11 19:17:16 2021
+
+# Variables
+
+# makefile (from 'Makefile', line 18)
+OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+NO_AT_BRIDGE = 1
+# makefile (from 'Makefile', line 17)
+SRC = $(wildcard $(SRCDIR)/*$(EXT))
+# makefile (from 'Makefile', line 12)
+EXT = .cpp
+# makefile (from 'Makefile', line 26)
+WDELOBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)\\%.o)
+# makefile (from 'Makefile', line 14)
+OBJDIR = obj
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-dd0a4ed7-2bbf-4874-9d3a-dce565406e19.sock
+# environment
+LC_NAME = en_GB.UTF-8
+# environment
+LC_NUMERIC = en_GB.UTF-8
+# environment
+VSCODE_CWD = /home/ef/dev/sdl2-unit3
+# environment
+WINDOWID = 58720258
+# makefile (from 'Makefile', line 22)
+DELOBJ = $(OBJ)
+# environment
+LC_ADDRESS = en_GB.UTF-8
+# default
+MAKE_COMMAND := make
+# environment
+GTK3_MODULES = xapp-gtk3-module
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/ef/dev/sdl2-unit3
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+MAIL = /var/spool/mail/ef
+# environment
+XDG_DATA_DIRS = /home/ef/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+OLDPWD = /home/ef/dev
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/ef/.config/Code/CachedData/7f6ab5485bbc008386c4386d08766667e155244e
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# environment
+LANG = C
+# environment
+SPACESHIP_VERSION = 3.13.3
+# environment
+XAUTHORITY = /home/ef/.Xauthority
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# makefile (from 'Makefile', line 19)
+DEP = $(OBJ:$(OBJDIR)/%.o=%.d)
+# makefile
+CURDIR := /home/ef/dev/sdl2-unit3
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR
+# default
+.SHELLFLAGS := -c
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XDG_SESSION_DESKTOP = bspwm
+# environment
+VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=8df15d8d-2cf3-43ff-914c-283883e30bf9&iid=8df15d8d-2cf3-43ff-914c-283883e30bf9&sid=8df15d8d-2cf3-43ff-914c-283883e30bf9","uploadToServer":true}
+# makefile (from 'main.d', line 1)
+MAKEFILE_LIST := Makefile GameObject.d Transform.d main.d
+# automatic
+@F = $(notdir $@)
+# environment
+ZSH = /home/ef/.oh-my-zsh
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 5247
+# environment
+XDG_SESSION_TYPE = x11
+# makefile (from 'Makefile', line 11)
+APPNAME = game
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+*F = $(notdir $*)
+# environment
+QT_QPA_PLATFORMTHEME = qt5ct
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
+# environment
+BREAKPAD_DUMP_LOCATION = /home/ef/.config/Code/exthost Crash Reports
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 3
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /usr/share/archcraft/scripts:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/home/ef/.config/bspwm/bin
+# environment
+SPACESHIP_ROOT = /home/ef/.oh-my-zsh/custom/themes/spaceship-prompt
+# default
+MAKEFILES := 
+# environment
+LC_MONETARY = en_GB.UTF-8
+# environment
+MOTD_SHOWN = pam
+# automatic
+^F = $(notdir $^)
+# environment
+LC_TIME = en_GB.UTF-8
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+WINIT_X11_SCALE_FACTOR = 1.0
+# environment
+LC_TELEPHONE = en_GB.UTF-8
+# automatic
+?F = $(notdir $?)
+# environment
+XDG_SEAT = seat0
+# environment
+ALACRITTY_LOG = /tmp/Alacritty-4023.log
+# environment
+LS_COLORS = 
+# automatic
++F = $(notdir $+)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+LESS = -R
+# environment
+DESKTOP_SESSION = bspwm
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = ef
+# makefile (from 'Makefile', line 25)
+EXE = .exe
+# environment
+XDG_VTNR = 7
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from 'Makefile', line 21)
+RM = rm
+# environment
+DISPLAY = :0
+# environment
+GTK_MODULES = canberra-gtk-module
+# environment
+USER = ef
+# default
+MAKE_VERSION := 4.3
+# makefile (from 'Makefile', line 8)
+LDFLAGS = -lSDL2
+# makefile (from 'Makefile', line 24)
+DEL = del
+# environment
+LC_MEASUREMENT = en_GB.UTF-8
+# environment
+PAGER = less
+# environment
+_ = /usr/bin/make
+# environment
+LC_PAPER = en_GB.UTF-8
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+COLORTERM = truecolor
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /home/ef
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-1ea5c8df-1.60.2-main.sock
+# environment
+TERM = alacritty
+# makefile (from 'Makefile', line 13)
+SRCDIR = src
+# environment
+XDG_SESSION_ID = 2
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# makefile (from 'Makefile', line 7)
+CXXFLAGS = -std=c++11 -Wall -g -Isrc/include
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/ef
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
+# makefile (from 'Makefile', line 6)
+CC = g++
+# environment
+GDMSESSION = bspwm
+# environment
+LC_IDENTIFICATION = en_GB.UTF-8
+# variable set hash-table stats:
+# Load=124/1024=12%, Rehash=0, Collisions=15/183=8%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+ 
+# src (device 2065, inode 12845712): 6 files, no impossibilities.
+# . (device 2065, inode 12716644): 11 files, no impossibilities.
+
+# 17 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+%.d: src/%.cpp
+#  recipe to execute (from 'Makefile', line 40):
+	@$(CPP) $(CFLAGS) $< -MM -MT $(@:%.d=$(OBJDIR)/%.o) >$@
+
+obj/%.o: src/%.cpp
+#  recipe to execute (from 'Makefile', line 47):
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+# 2 implicit rules, 0 (0.0%) terminal.
+# Files
+
+game: obj/GameObject.o obj/Transform.o obj/main.o
+#  Implicit rule search has not been done.
+#  Last modified 2021-10-11 19:16:29.087728203
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 36):
+	$(CC) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+
+Transform.d: src/Transform.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Transform'
+#  Last modified 2021-10-11 18:16:05.209593993
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 40):
+	@$(CPP) $(CFLAGS) $< -MM -MT $(@:%.d=$(OBJDIR)/%.o) >$@
+
+cleandepw:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 69):
+	$(DEL) $(DEP)
+
+obj/main.o: src/main.cpp src/main.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2021-10-11 19:15:59.850034181
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 47):
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+cleandep:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 58):
+	$(RM) $(DEP)
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-11 19:16:27.2843317
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/Transform.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-11 18:12:49.318810225
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/GameObject.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-11 18:12:49.318810225
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/main.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-11 18:15:59.612721492
+#  File has been updated.
+#  Successfully updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 53):
+	$(RM) $(DELOBJ) $(DEP) $(APPNAME)
+
+GameObject.d: src/GameObject.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'GameObject'
+#  Last modified 2021-10-11 18:16:05.28293002
+ 
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 40):
+	@$(CPP) $(CFLAGS) $< -MM -MT $(@:%.d=$(OBJDIR)/%.o) >$@
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: game
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+
+cleanw:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 64):
+	$(DEL) $(WDELOBJ) $(DEP) $(APPNAME)$(EXE)
+
+obj/Transform.o: src/Transform.cpp src/Transform.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Transform'
+#  Last modified 2021-10-11 19:16:00.040040881
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 47):
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+main.d: src/main.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2021-10-11 18:16:05.272929653
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 40):
+	@$(CPP) $(CFLAGS) $< -MM -MT $(@:%.d=$(OBJDIR)/%.o) >$@
+
+obj/GameObject.o: src/GameObject.cpp src/GameObject.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'GameObject'
+#  Last modified 2021-10-11 19:15:59.213345063
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 47):
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+.PHONY: clean cleandep cleanw cleandepw
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=19/1024=2%, Rehash=0, Collisions=0/70=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 37 / storage = 355 B / avg = 9 B
+# current buf: size = 8162 B / used = 355 B / count = 37 / avg = 9 B
+
+ 
+# strcache performance: lookups = 92 / hit rate = 59%
+# hash-table stats:
+# Load=37/8192=0%, Rehash=0, Collisions=0/92=0%
+# Finished Make data base on Mon Oct 11 19:17:16 2021
+
+ 
