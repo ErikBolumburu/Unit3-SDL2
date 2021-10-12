@@ -8,9 +8,10 @@
 
 class Player : public GameObject{
     public:
-        Player(){};
+        Player(){
+        };
         float moveSpeed = 10;
-        bool grounded = true;
+        bool grounded = false;
         Player(Transform trans){
             transform = trans;
             rect.x = transform.position.x;
@@ -24,6 +25,9 @@ class Player : public GameObject{
             rect.w = transform.scale.x;
             rect.h = transform.scale.y;
             if(grounded){
+                transform.velocity.y = 0;
+            }
+            else{
                 transform.velocity.y = 2;
             }
             transform.Move(transform.velocity);
