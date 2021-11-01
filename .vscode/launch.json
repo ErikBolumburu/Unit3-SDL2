@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Make And Launch",
+            "type": "f5anything",
+            "request": "launch",
+            "command": "make clean && make && ./game",
+        },
+        {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",

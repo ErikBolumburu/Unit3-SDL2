@@ -1,4 +1,5 @@
 #include <Transform.hpp>
+#include <Game.hpp>
 #include <iostream>
 
 
@@ -11,6 +12,6 @@ void Transform::SetPosition(Vector2 newPosition){
 }
 
 void Transform::Move(Vector2 direction){
-    position.x += direction.x;
-    position.y += direction.y;
+    position.x += (direction.x * game.deltaTime);
+    position.y += direction.y * game.deltaTime;
 }

@@ -8,11 +8,10 @@
 #include <math.h>
 #include <vector>
 #include <Game.hpp>
-#define FPS 60
+
+Game game;
 
 int main(int argc, char *argv[]){
-
-    Game game;
 
     if (SDL_Init(SDL_INIT_VIDEO) > 0)
 		std::cout << "SDL_INIT HAS FAILED. ERROR: " << SDL_GetError() << std::endl;
@@ -30,40 +29,37 @@ int main(int argc, char *argv[]){
     game.CreatePlatform(Vector2(100, 400), Vector2(300, 100));
     game.CreatePlatform(Vector2(0, 300), Vector2(200, 30));
 
-    int a;
-    int b;
-    int delta;
     bool running = true;
     SDL_Event event;
+    Uint64 now = SDL_GetPerformanceCounter();
+    Uint64 last = 0;
     while(running){
-        a = SDL_GetTicks();
-        delta = a - b;
-        
-        if(delta > 1000 / FPS){
-            player.Update();
-            while(SDL_PollEvent(&event)){
-                player.PlayerInput(event);
-                if(event.type == SDL_QUIT){
-                    running = false;
-                }
-            }
-            b = a;
-            SDL_RenderClear(renderWindow.renderer);
-//
-            SDL_SetRenderDrawColor(renderWindow.renderer, 255, 255, 255, 255);
-            for(GameObject* go : game.gameObjects){
-                SDL_RenderFillRect(renderWindow.renderer, &go->rect);
-                if(auto* platform = dynamic_cast<Platform*>(go)){
-                    if(game.CheckCollision(player, *go)){
-                        std::cout << "Collision Detected" << std::endl;
-                        player.grounded = true;
-                    }
-                }
-            }
+        last = now;
+        now = SDL_GetPerformanceCounter();
 
-            SDL_SetRenderDrawColor(renderWindow.renderer, 30, 30, 30, 255);
-            SDL_RenderPresent(renderWindow.renderer);
+        game.deltaTime = (double)((now - last) / (double)SDL_GetPerformanceFrequency() );
+        player.Update();
+        while(SDL_PollEvent(&event)){
+            player.PlayerInput(event);
+            if(event.type == SDL_QUIT){
+                running = false;
+            }
         }
+        SDL_RenderClear(renderWindow.renderer);
+
+        SDL_SetRenderDrawColor(renderWindow.renderer, 255, 255, 255, 255);
+        player.grounded = false;
+        for(GameObject* go : game.gameObjects){
+            SDL_RenderFillRect(renderWindow.renderer, &go->rect);
+            if(auto* platform = dynamic_cast<Platform*>(go)){
+                if(game.CheckCollision(player, *go)){
+                    player.grounded = true;
+                }
+            }
+        }
+
+        SDL_SetRenderDrawColor(renderWindow.renderer, 30, 30, 30, 255);
+        SDL_RenderPresent(renderWindow.renderer);
     }
 
     SDL_DestroyWindow(renderWindow.window);

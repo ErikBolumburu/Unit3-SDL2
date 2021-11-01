@@ -1,0 +1,9 @@
+{
+    "version": "2.0.0",
+    "tasks": [{
+        "label": "makeandlaunch",
+        "command": "make && ./game", // Could be any other shell command
+        "args": ["make"],
+        "type": "shell"
+    }]
+}

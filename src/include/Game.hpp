@@ -8,6 +8,8 @@ class Game{
     public:
         std::vector<GameObject*> gameObjects;
 
+        double deltaTime = 0;
+
         void CreatePlatform(Vector2 pos, Vector2 size){
             gameObjects.push_back(new Platform(Transform(pos, size)));
         }
