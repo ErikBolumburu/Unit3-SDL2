@@ -2,16 +2,16 @@
 #include <GameObject.hpp>
 #include <Vector2.hpp>
 #include <vector>
-#include <Platform.hpp>
+#include <Wall.hpp>
 
-class Game{
-    public:
-        std::vector<GameObject*> gameObjects;
+class Game{ 
+    public: // All variables and functions in this section are accessible outside of the script
+        std::vector<GameObject*> gameObjects; // A std::vector of gameObjects. I used std::vector so that it is resizeable.
 
-        double deltaTime = 0;
+        double deltaTime = 0; // Initialize deltaTime to 0 to ensure it is not allocated a random value.
 
-        void CreatePlatform(Vector2 pos, Vector2 size){
-            gameObjects.push_back(new Platform(Transform(pos, size)));
+        void CreateWall(Vector2 pos, Vector2 size){ 
+            gameObjects.push_back(new Wall(Transform(pos, size))); // Creates a new Wall object and adds it to the std::vector of gameObjects
         }
 
         bool CheckCollision(GameObject &a, GameObject &b){
@@ -23,4 +23,4 @@ class Game{
         }
 };
 
-extern Game game;
+extern Game game; // Externalises 'game' so that I can access its data in any file
