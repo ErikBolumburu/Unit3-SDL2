@@ -1,5 +1,6 @@
 #include <RenderWindow.hpp>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <iostream>
 #include <GameObject.hpp>
 #include <Vector2.hpp>
@@ -15,7 +16,10 @@ int main(int argc, char *argv[]){
 
     if (SDL_Init(SDL_INIT_VIDEO) > 0) // Initializing SDL_VIDEO module
 		std::cout << "SDL_INIT HAS FAILED. ERROR: " << SDL_GetError() << std::endl; // If there is an error, print it out for debugging purposes
-    
+
+    if (!(IMG_Init(IMG_INIT_PNG))) // Initializing SDL_Image to work with png files
+		std::cout << "IMG_init has failed. Error: " << SDL_GetError() << std::endl; // If there is an error, print it to console to debugging purposes
+
     RenderWindow renderWindow; // Create a new RenderWindow class
     renderWindow.window = SDL_CreateWindow("Terraria",
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -23,6 +27,8 @@ int main(int argc, char *argv[]){
         SDL_WINDOW_SHOWN); // Define paramaters for the SDL_Window class within renderWindow
     renderWindow.renderer = SDL_CreateRenderer(renderWindow.window, -1, SDL_RENDERER_ACCELERATED); // Create an SDL_Renderer and define its parameters
 
+    //Initialize Used Textures
+    SDL_Texture* grassTIleTex = renderWindow.loadTexture("assets/tex/terrain/grass.png");
 
     Player player(Transform(Vector2(0,0), Vector2(50, 50))); // Create the player object
     game.gameObjects.push_back(&player); // Add it to the game.gameObjects vector
@@ -46,7 +52,6 @@ int main(int argc, char *argv[]){
             }
         }
         SDL_RenderClear(renderWindow.renderer); // Clear the screen to prepare to render the current frame
-
         SDL_SetRenderDrawColor(renderWindow.renderer, 255, 255, 255, 255); // Set the current render color to white. This means that anything drawn after this point will be white, unless changed again.
         for(GameObject* go : game.gameObjects){ // Loop through all the GameObjects in game.gameObjects
             SDL_RenderFillRect(renderWindow.renderer, &go->rect); // Render every GameObject based on their current SDL_Rect 'rect'

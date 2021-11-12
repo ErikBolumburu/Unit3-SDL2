@@ -1,7 +1,38 @@
 #pragma once
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <iostream>
 
-struct RenderWindow{ // A class that stores both the SDL_Renderer and the SDL_Window in one place and makes them public by default
+struct RenderWindow{
     SDL_Renderer *renderer;
     SDL_Window *window;
+
+    SDL_Texture* loadTexture(const char* p_filePath){
+        SDL_Texture* texture = NULL;
+        texture = IMG_LoadTexture(renderer, p_filePath);
+        if(texture == NULL)
+            std::cout << " Failed to load texture. Error: " << SDL_GetError() <<std::endl;
+
+        return texture;
+    }
+
+    void Render(SDL_Texture* p_tex)
+    {
+
+        SDL_Rect src; 
+        src.x = 0;
+        src.y = 0;
+        src.w = 32;
+        src.h = 32;
+
+        SDL_Rect dst;
+        dst.x = 400;
+        dst.y = 200;
+        dst.w = 32 * 4;
+        dst.h = 32 * 4;
+
+
+        SDL_RenderCopy(renderer, p_tex, &src, &dst);
+    }
+
 };
