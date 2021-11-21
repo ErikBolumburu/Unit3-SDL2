@@ -1,0 +1,8 @@
+clang
+%h -x c++-header
+-Wall
+-Wextra
+%cpp -std=c++11
+%c -std=c11
+-I/home/ef/dev/csp/src/include
+-I.
