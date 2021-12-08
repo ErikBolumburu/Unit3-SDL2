@@ -5,6 +5,7 @@ class Transform{
     public:
         Vector2 position;
         Vector2 scale;
+        Vector2 velocity;
 
         void SetTransform(Transform newTransform){
            position = newTransform.position;

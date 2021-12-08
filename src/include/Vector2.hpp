@@ -14,4 +14,12 @@ struct Vector2{
             x = X;
             y = Y;
         };
+
 };
+
+Vector2 operator+(Vector2 lhs, Vector2 rhs){
+    Vector2 sum;
+    sum.x = lhs.x + rhs.x;
+    sum.y = lhs.y + rhs.y;
+    return sum;
+}
