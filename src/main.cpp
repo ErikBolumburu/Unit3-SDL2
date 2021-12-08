@@ -9,6 +9,7 @@
 #include <Game.hpp>
 
 int main(){ // Entry Point of the program
+
     Game game;
 
     if (SDL_Init(SDL_INIT_VIDEO) > 0) // Initialising SDL_VIDEO
