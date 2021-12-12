@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/src/include",
+                "/usr/include/SDL2",
+                "${workspaceFolder}/src/include/lib/imgui/backends",
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/include/lib/imgui"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

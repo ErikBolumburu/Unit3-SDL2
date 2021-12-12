@@ -16,20 +16,18 @@ struct Bar {
         bgBar.h = height;
         bgBar.w = width;
         valueBar.w = width; 
+        valueBar.h = height;
 
         bgColor = BgColor;
         fillColor = FillColor;
     }
 
     void RenderBar(SDL_Renderer* renderer, float percentageFull){
-        valueBar.w = percentageFull * bgBar.w;
-        std::cout << valueBar.w << "\n";
-        SDL_SetRenderDrawColor(renderer, fillColor.r, fillColor.g, fillColor.b, fillColor.a);
-        SDL_RenderFillRect(renderer, &valueBar);
-
         SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
         SDL_RenderFillRect(renderer, &bgBar);
 
-        
+        valueBar.w = percentageFull * bgBar.w;
+        SDL_SetRenderDrawColor(renderer, fillColor.r, fillColor.g, fillColor.b, fillColor.a);
+        SDL_RenderFillRect(renderer, &valueBar);
     }
 };

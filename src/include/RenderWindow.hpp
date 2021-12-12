@@ -12,7 +12,7 @@ struct RenderWindow {
             tex = IMG_LoadTexture(renderer, imgPath);
 
             if(tex == NULL)
-                std::cout << "Failed to load texture" << SDL_GetError() << "\n";
+                std::cout << "Failed to load texture " << SDL_GetError() << "\n";
 
             return tex;
         };

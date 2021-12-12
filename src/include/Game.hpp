@@ -9,6 +9,7 @@ class Game{
         World world;
 
         SDL_DisplayMode dm;
+
 };
 
 extern Game game; // Make any variable with the type Game and name game accessible from anywhere in the program.
