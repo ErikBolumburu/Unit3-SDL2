@@ -73,7 +73,7 @@ int main(){ // Entry Point of the program
     SDL_Color temperatureFillColor = {0, 0, 255};
 
     Bar healthBar(Vector2(860, 20), 40, 400, bgBarColor, healthFillColor); 
-    Bar hungerBar(Vector2(860, 80), 40, 400, bgBarColor, hungerFillColor); 
+    Bar hungerBar(Vector2(860, 80), 40, 400, bgBarColor, hungerFillColor);
     Bar temperatureBar(Vector2(860, 140), 40, 400, bgBarColor, temperatureFillColor); 
 
     int a;
@@ -90,6 +90,7 @@ int main(){ // Entry Point of the program
         if(dT > (1000 / FPS)){
 
             player.Update();
+            player.SetCurrentTile(game.world);
 
             while(SDL_PollEvent(&event)){
                 if(event.type == SDL_QUIT){
@@ -118,6 +119,8 @@ int main(){ // Entry Point of the program
                 if(showDebug){
                     ImGui::Text("FPS: %f", 1.0f / fps);
                     ImGui::SliderFloat("Hunger: ", &player.hunger.value, player.hunger.minHunger, player.hunger.maxHunger);
+                    ImGui::SliderFloat("Health: ", &player.health.value, player.health.minHealth, player.health.maxHealth);
+                    ImGui::SliderFloat("Temperature: ", &player.temperature.value, player.temperature.minTemperature, player.temperature.maxTemperature);
                     ImGui::SliderFloat("Move Speed: ", &player.moveSpeed, 0, 1);
                 }
             }
@@ -126,9 +129,9 @@ int main(){ // Entry Point of the program
 
             SDL_RenderCopy(renderWindow.renderer, playerTex, NULL, &player.rect);
 
-            healthBar.RenderBar(renderWindow.renderer, 0.4); 
-            hungerBar.RenderBar(renderWindow.renderer, player.hunger.value / 100); 
-            temperatureBar.RenderBar(renderWindow.renderer, 0.6); 
+            healthBar.RenderBar(renderWindow.renderer, player.health.value / player.health.maxHealth); 
+            hungerBar.RenderBar(renderWindow.renderer, player.hunger.value / player.hunger.maxHunger); 
+            temperatureBar.RenderBar(renderWindow.renderer, player.temperature.value / player.temperature.maxTemperature); 
 
             SDL_SetRenderDrawColor(renderWindow.renderer, 30, 30, 30, 255); 
             ImGui::Render();
