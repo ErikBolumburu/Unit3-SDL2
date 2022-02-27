@@ -3,9 +3,11 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+/*
 #include <imgui.h>
 #include <imgui_impl_sdlrenderer.h>
 #include <imgui_impl_sdl.h>
+*/
 
 #include <Bar.hpp>
 #include <RenderWindow.hpp>
@@ -44,17 +46,18 @@ int main(){ // Entry Point of the program
             SDL_RENDERER_ACCELERATED // Provides Hardware Acceleration
             );
 
-        if (SDL_GetDesktopDisplayMode(0, &game.dm) != 0)
-        {
-            SDL_Log("SDL_GetDesktopDisplayMode failed: %s", SDL_GetError());
-            return 1;
-        }
+    if (SDL_GetDesktopDisplayMode(0, &game.dm) != 0)
+    {
+        SDL_Log("SDL_GetDesktopDisplayMode failed: %s", SDL_GetError());
+        return 1;
+    }
     
+    /* TODO: COMPILE IMGUI PROPERLY
     ImGui::CreateContext();
     ImGui::StyleColorsClassic();
     ImGui_ImplSDL2_InitForSDLRenderer(renderWindow.window);
     ImGui_ImplSDLRenderer_Init(renderWindow.renderer);
-
+    */
     bool showDebug = false;
 
     game.world.GenerateWorld();
@@ -102,7 +105,7 @@ int main(){ // Entry Point of the program
                     }
                 }
                 player.Movement(event, dT);
-                ImGui_ImplSDL2_ProcessEvent(&event);
+                //ImGui_ImplSDL2_ProcessEvent(&event);
             }
 
             b = a;
@@ -111,7 +114,7 @@ int main(){ // Entry Point of the program
 
             SDL_SetRenderDrawColor(renderWindow.renderer, 255, 255, 255, 255); 
 
-            ImGui_ImplSDLRenderer_NewFrame();
+            /*ImGui_ImplSDLRenderer_NewFrame();
             ImGui_ImplSDL2_NewFrame();
 
             ImGui::NewFrame();
@@ -124,7 +127,7 @@ int main(){ // Entry Point of the program
                     ImGui::SliderFloat("Move Speed: ", &player.moveSpeed, 0, 1);
                 }
             }
-
+            */
             game.world.RenderWorld(renderWindow, player.transform.position, grassTexture, sandTexture, snowTexture);
 
             SDL_RenderCopy(renderWindow.renderer, playerTex, NULL, &player.rect);
@@ -134,17 +137,19 @@ int main(){ // Entry Point of the program
             temperatureBar.RenderBar(renderWindow.renderer, player.temperature.value / player.temperature.maxTemperature); 
 
             SDL_SetRenderDrawColor(renderWindow.renderer, 30, 30, 30, 255); 
-            ImGui::Render();
-            ImGui_ImplSDLRenderer_RenderDrawData(ImGui::GetDrawData());
+            //ImGui::Render();
+            //ImGui_ImplSDLRenderer_RenderDrawData(ImGui::GetDrawData());
             SDL_RenderPresent(renderWindow.renderer);
             Uint64 end = SDL_GetPerformanceCounter();
             fps = (end - start) / (float)SDL_GetPerformanceFrequency();
         }
     }
 
+    /*
     ImGui_ImplSDLRenderer_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
+    */
     SDL_DestroyWindow(renderWindow.window); // Safely destroys the window.
 
     return 0;
