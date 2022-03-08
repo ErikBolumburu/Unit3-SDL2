@@ -4,10 +4,14 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
+#define SCREENWIDTH 1280
+#define SCREENHEIGHT 720
+
 class Tile{
     public:
         Vector2 position;
         float temperature;
+        int type;
         SDL_Texture* texture;
         SDL_Rect rect;
 
@@ -22,7 +26,8 @@ class Tile{
         }
 
         void UpdateTilePosition(Vector2 playerPos){
-            rect.x = (position.x * 80) + -playerPos.x;
-            rect.y = (position.y * 80) + -playerPos.y;
+            rect.x = ((position.x * 80) + -playerPos.x) + (SCREENWIDTH / 2);
+            rect.y = ((position.y * 80) + -playerPos.y) + (SCREENHEIGHT / 2);
         }
 };
+

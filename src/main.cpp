@@ -51,13 +51,14 @@ int main(){ // Entry Point of the program
         SDL_Log("SDL_GetDesktopDisplayMode failed: %s", SDL_GetError());
         return 1;
     }
-    
+
     /* TODO: COMPILE IMGUI PROPERLY
     ImGui::CreateContext();
     ImGui::StyleColorsClassic();
     ImGui_ImplSDL2_InitForSDLRenderer(renderWindow.window);
     ImGui_ImplSDLRenderer_Init(renderWindow.renderer);
     */
+
     bool showDebug = false;
 
     game.world.GenerateWorld();
@@ -68,7 +69,8 @@ int main(){ // Entry Point of the program
 
     SDL_Texture* playerTex = renderWindow.LoadTexture("/home/ef/dev/csp/assets/player.png");
 
-    Player player(Transform(Vector2(100, 100), Vector2(100, 100)));
+    Player player(Transform(Vector2(0, 0), Vector2(100, 100)));
+    
     
     SDL_Color bgBarColor = {30, 30, 30};
     SDL_Color hungerFillColor = {255, 179, 0};
@@ -78,6 +80,7 @@ int main(){ // Entry Point of the program
     Bar healthBar(Vector2(860, 20), 40, 400, bgBarColor, healthFillColor); 
     Bar hungerBar(Vector2(860, 80), 40, 400, bgBarColor, hungerFillColor);
     Bar temperatureBar(Vector2(860, 140), 40, 400, bgBarColor, temperatureFillColor); 
+
 
     int a;
     int b;
@@ -93,7 +96,8 @@ int main(){ // Entry Point of the program
         if(dT > (1000 / FPS)){
 
             player.Update();
-            player.SetCurrentTile(game.world);
+            player.currentTile = player.GetCurrentTile(game.world);
+            std::cout << player.currentTile.type << "\n";
 
             while(SDL_PollEvent(&event)){
                 if(event.type == SDL_QUIT){
@@ -114,7 +118,8 @@ int main(){ // Entry Point of the program
 
             SDL_SetRenderDrawColor(renderWindow.renderer, 255, 255, 255, 255); 
 
-            /*ImGui_ImplSDLRenderer_NewFrame();
+            /*
+            ImGui_ImplSDLRenderer_NewFrame();
             ImGui_ImplSDL2_NewFrame();
 
             ImGui::NewFrame();
@@ -144,6 +149,7 @@ int main(){ // Entry Point of the program
             fps = (end - start) / (float)SDL_GetPerformanceFrequency();
         }
     }
+
 
     /*
     ImGui_ImplSDLRenderer_Shutdown();

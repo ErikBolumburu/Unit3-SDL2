@@ -36,14 +36,13 @@ class Player : public GameObject{
         }
 
         virtual void Update() override {
-            rect.w = transform.scale.x;
-            rect.h = transform.scale.y;
 
             transform.position = transform.position + transform.velocity;
 
             MinusHunger();
             IsStarving();
             IsWellFed();
+            ChangeTemperature();
             IsHotOrCold();
         }           
 
@@ -78,11 +77,17 @@ class Player : public GameObject{
             }
         }
 
-        // FIXME: Players Transform Is In Pixels/Floating Point/IDK Some Decimal Where As Tiles Are In Grid Space. This cause bad. Figure Soon Out Please.
-        void SetCurrentTile(World world){
-            currentTile = world.tiles[static_cast<int>(transform.position.x) / 80][static_cast<int>(transform.position.y) / 80];
-            std::cout << "X = " << currentTile.position.x << ", Y = " << currentTile.position.y << "\n";
-            //std::cout << transform.position.x << "\n";
+        void ChangeTemperature(){
+            if(currentTile.type == 0) temperature.IncreaseTemperature(0.01f);
+            if(currentTile.type == 2) temperature.DecreaseTemperature(0.01f);
+            if(currentTile.type == 1){
+                if(temperature.value > 50) temperature.DecreaseTemperature(0.01f);
+                if(temperature.value < 50) temperature.IncreaseTemperature(0.01f);
+            }
+        }
+
+        Tile GetCurrentTile(World world){
+            return world.tiles[static_cast<int>(transform.position.x) / 80][static_cast<int>(transform.position.y) / 80];
         };
 
         void Movement(SDL_Event event, float dT){
