@@ -21,25 +21,25 @@ class World{
             srand((unsigned int)time(NULL)); // Generate A Random Number To Use For The Seed
             int seed = std::rand();
             noise = FastNoiseLite(seed);
-            noise.SetNoiseType(FastNoiseLite::NoiseType_OpenSimplex2);
-            noise.SetFrequency(0.001f);
-            noise.SetFractalOctaves(3);
+            noise.SetNoiseType(FastNoiseLite::NoiseType_Perlin);
+            noise.SetFrequency(0.01f);
             noise.SetFractalLacunarity(2);
             noise.SetFractalGain(0.5f);
 
             for(int x = 0; x < WIDTH; x++){
                 for(int y = 0; y < HEIGHT; y++){
                     float temperature = noise.GetNoise(static_cast<float>(x), static_cast<float>(y));
-                    if(tiles[x][y].temperature > SAND_THRESHOLD){
-                        tiles[x][y].type = 0;
+                    TileType type;
+                    if(temperature > SAND_THRESHOLD){
+                        type = TileType::SAND;
                     }
-                    else if(tiles[x][y].temperature < SAND_THRESHOLD && tiles[x][y].temperature > GRASS_THRESHOLD){
-                        tiles[x][y].type = 1;
+                    else if(temperature < SAND_THRESHOLD && temperature > GRASS_THRESHOLD){
+                        type = TileType::GRASS;
                     }
-                    else if(tiles[x][y].temperature < GRASS_THRESHOLD){
-                        tiles[x][y].type = 2;
+                    else if(temperature < GRASS_THRESHOLD){
+                        type = TileType::SNOW;
                     }
-                    tiles[x][y] = Tile(Vector2(x, y), temperature);
+                    tiles[x][y] = Tile(Vector2(x, y), temperature, type);
                 }
             }
         }
@@ -48,17 +48,17 @@ class World{
             for(int x = 0; x < WIDTH; x++){
                 for(int y = 0; y < HEIGHT; y++){
                     tiles[x][y].UpdateTilePosition(playerPos);
-                    if(tiles[x][y].type == 0){
+                    if(tiles[x][y].type == TileType::SAND){
                        SDL_RenderCopy(renderWindow.renderer,
                            sandTexture,
                            NULL, &tiles[x][y].rect);
                    }
-                   else if(tiles[x][y].type == 1){
+                   else if(tiles[x][y].type == TileType::GRASS){
                        SDL_RenderCopy(renderWindow.renderer,
                            grassTexture,
                            NULL, &tiles[x][y].rect);
                    }
-                   else if(tiles[x][y].type == 2){
+                   else if(tiles[x][y].type == TileType::SNOW){
                        SDL_RenderCopy(renderWindow.renderer,
                            snowTexture,
                            NULL, &tiles[x][y].rect);

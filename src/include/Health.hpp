@@ -8,17 +8,7 @@ class Health {
         float value = 100;
 
         void LowerHealth(float amount){
-            if(value <= minHealth){
-                Death();
-            }
-            else{
-                value -= amount;
-            }
-
-        }
-
-        void Death(){
-            std::cout << "Dead \n";
+            value -= amount;
         }
 
 };

@@ -7,22 +7,29 @@
 #define SCREENWIDTH 1280
 #define SCREENHEIGHT 720
 
+enum TileType{
+    SAND,
+    GRASS,
+    SNOW
+};
+
 class Tile{
     public:
         Vector2 position;
         float temperature;
-        int type;
+        TileType type;
         SDL_Texture* texture;
         SDL_Rect rect;
 
         Tile(){};
-        Tile(Vector2 Position, float Temperature){
+        Tile(Vector2 Position, float Temperature, TileType Type){
             position = Position;
             rect.x = position.x * 80;
             rect.y = position.y * 80;
             rect.w = 80;
             rect.h = 80;
             temperature = Temperature;
+            type = Type;
         }
 
         void UpdateTilePosition(Vector2 playerPos){

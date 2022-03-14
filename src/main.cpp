@@ -68,9 +68,9 @@ int main(){ // Entry Point of the program
     SDL_Texture* snowTexture = renderWindow.LoadTexture("/home/ef/dev/csp/assets/snow.png");
 
     SDL_Texture* playerTex = renderWindow.LoadTexture("/home/ef/dev/csp/assets/player.png");
+    SDL_Texture* deathScreen = renderWindow.LoadTexture("/home/ef/dev/csp/assets/death_text.png");
 
     Player player(Transform(Vector2(0, 0), Vector2(100, 100)));
-    
     
     SDL_Color bgBarColor = {30, 30, 30};
     SDL_Color hungerFillColor = {255, 179, 0};
@@ -81,6 +81,13 @@ int main(){ // Entry Point of the program
     Bar hungerBar(Vector2(860, 80), 40, 400, bgBarColor, hungerFillColor);
     Bar temperatureBar(Vector2(860, 140), 40, 400, bgBarColor, temperatureFillColor); 
 
+    SDL_Rect deathRect;
+    deathRect.x = 0; 
+    deathRect.y = 0;
+    deathRect.w = 1280;
+    deathRect.h = 720;
+
+    int deathFrameCounter = 0;
 
     int a;
     int b;
@@ -97,6 +104,7 @@ int main(){ // Entry Point of the program
 
             player.Update();
             player.currentTile = player.GetCurrentTile(game.world);
+
             std::cout << player.currentTile.type << "\n";
 
             while(SDL_PollEvent(&event)){
@@ -133,9 +141,15 @@ int main(){ // Entry Point of the program
                 }
             }
             */
+
             game.world.RenderWorld(renderWindow, player.transform.position, grassTexture, sandTexture, snowTexture);
 
             SDL_RenderCopy(renderWindow.renderer, playerTex, NULL, &player.rect);
+            if(player.health.value <= 0){
+                SDL_RenderCopy(renderWindow.renderer, deathScreen, NULL, &deathRect);
+                deathFrameCounter++;
+            }
+            if(deathFrameCounter >= 1000) break;
 
             healthBar.RenderBar(renderWindow.renderer, player.health.value / player.health.maxHealth); 
             hungerBar.RenderBar(renderWindow.renderer, player.hunger.value / player.hunger.maxHunger); 
@@ -150,12 +164,12 @@ int main(){ // Entry Point of the program
         }
     }
 
-
     /*
     ImGui_ImplSDLRenderer_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
     */
+   
     SDL_DestroyWindow(renderWindow.window); // Safely destroys the window.
 
     return 0;
