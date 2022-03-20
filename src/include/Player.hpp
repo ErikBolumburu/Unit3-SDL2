@@ -9,6 +9,8 @@
 #include <Health.hpp>
 #include <Temperature.hpp>
 #include <Tile.hpp>
+#include <Bush.hpp>
+#include <Vector2.hpp>
 
 #define SCREENWIDTH 1280
 #define SCREENHEIGHT 720
@@ -88,7 +90,7 @@ class Player : public GameObject{
 
         Tile GetCurrentTile(World world){
             return world.tiles[static_cast<int>(transform.position.x) / 80][static_cast<int>(transform.position.y) / 80];
-        };
+        }
 
         void Movement(SDL_Event event, float dT){
             if(event.type == SDL_KEYDOWN){ 
@@ -118,6 +120,15 @@ class Player : public GameObject{
                 if(event.key.keysym.scancode == SDL_SCANCODE_D){
                     transform.velocity.x = 0;
                 }
+            }
         }
-    }
+
+        void Eat(World &world){
+            for(Bush &bush : world.bushes){
+                if(world.DistanceBetween(bush.pos, currentTile.position) == 0 && bush.hasBerries){ // is the player standing on the bush
+                    bush.hasBerries = false;
+                    hunger.IncreaseHunger(10);
+                }
+            }
+        }
 };

@@ -15,6 +15,7 @@ struct Vector2{
             y = Y;
         };
 
+
 };
 
 Vector2 operator+(Vector2 lhs, Vector2 rhs){

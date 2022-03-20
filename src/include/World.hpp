@@ -6,6 +6,7 @@
 #include <RenderWindow.hpp>
 #include <iostream>
 #include <FastNoiseLite.h>
+#include <Bush.hpp>
 #define WIDTH 100
 #define HEIGHT 100
 #define SAND_THRESHOLD 0.25
@@ -15,6 +16,7 @@ class World{
     public:
         int seed;
         Tile tiles[WIDTH][HEIGHT];
+        std::vector<Bush> bushes;
         FastNoiseLite noise;
 
         void GenerateWorld(){
@@ -42,9 +44,29 @@ class World{
                     tiles[x][y] = Tile(Vector2(x, y), temperature, type);
                 }
             }
+
+            GenerateFood();
+
         }
 
-        void RenderWorld(RenderWindow renderWindow, Vector2 playerPos, SDL_Texture* grassTexture, SDL_Texture* sandTexture, SDL_Texture* snowTexture){
+        void GenerateFood(){
+            for(int x = 0; x < WIDTH; x++){
+                for(int y = 0; y < HEIGHT; y++){
+                    if(tiles[x][y].type == TileType::GRASS){
+                        if((std::rand() % 10) == 0){ // 10% Chance (0-9)
+                            Bush bush(&tiles[x][y].rect, Vector2(x, y));
+                            bushes.push_back(bush);
+                        }
+                    }
+                }
+            }            
+        }
+
+        int DistanceBetween(Vector2 a, Vector2 b){
+            return abs((a.x - b.x) + (a.y - b.y));
+        }
+
+        void RenderWorld(RenderWindow renderWindow, Vector2 playerPos, SDL_Texture* grassTexture, SDL_Texture* sandTexture, SDL_Texture* snowTexture, SDL_Texture* bushTex, SDL_Texture* berryTex){
             for(int x = 0; x < WIDTH; x++){
                 for(int y = 0; y < HEIGHT; y++){
                     tiles[x][y].UpdateTilePosition(playerPos);
@@ -65,5 +87,10 @@ class World{
                    }
                 }
             }
+
+            for(Bush bush : bushes){
+                bush.Draw(renderWindow.renderer, bushTex, berryTex);
+            }
+
         }
 };

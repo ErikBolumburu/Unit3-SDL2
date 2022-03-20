@@ -70,6 +70,9 @@ int main(){ // Entry Point of the program
     SDL_Texture* playerTex = renderWindow.LoadTexture("/home/ef/dev/csp/assets/player.png");
     SDL_Texture* deathScreen = renderWindow.LoadTexture("/home/ef/dev/csp/assets/death_text.png");
 
+    SDL_Texture* bushTexture = renderWindow.LoadTexture("/home/ef/dev/csp/assets/bush.png");
+    SDL_Texture* bushBerryTexture = renderWindow.LoadTexture("/home/ef/dev/csp/assets/bush_berry.png");
+
     Player player(Transform(Vector2(0, 0), Vector2(100, 100)));
     
     SDL_Color bgBarColor = {30, 30, 30};
@@ -105,8 +108,6 @@ int main(){ // Entry Point of the program
             player.Update();
             player.currentTile = player.GetCurrentTile(game.world);
 
-            std::cout << player.currentTile.type << "\n";
-
             while(SDL_PollEvent(&event)){
                 if(event.type == SDL_QUIT){
                     running = false;
@@ -114,6 +115,9 @@ int main(){ // Entry Point of the program
                 if(event.type == SDL_KEYDOWN){ 
                     if(event.key.keysym.scancode == SDL_SCANCODE_L){
                         showDebug = !showDebug;
+                    }
+                    if(event.key.keysym.scancode == SDL_SCANCODE_E){
+                        player.Eat(game.world);
                     }
                 }
                 player.Movement(event, dT);
@@ -142,7 +146,7 @@ int main(){ // Entry Point of the program
             }
             */
 
-            game.world.RenderWorld(renderWindow, player.transform.position, grassTexture, sandTexture, snowTexture);
+            game.world.RenderWorld(renderWindow, player.transform.position, grassTexture, sandTexture, snowTexture, bushTexture, bushBerryTexture);
 
             SDL_RenderCopy(renderWindow.renderer, playerTex, NULL, &player.rect);
             if(player.health.value <= 0){
@@ -169,7 +173,7 @@ int main(){ // Entry Point of the program
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
     */
-   
+
     SDL_DestroyWindow(renderWindow.window); // Safely destroys the window.
 
     return 0;
